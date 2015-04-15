@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
   let oAuthService = OAuthService()
-
+  
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     if let
       token = NSUserDefaults.standardUserDefaults().objectForKey(kUserDefaultTokenKey) as? String,
@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       storyboard = rootViewController.storyboard
     {
       println(token)
-     let navController = storyboard.instantiateViewControllerWithIdentifier("MainMenuNavigationController") as! UINavigationController
+      let navController = storyboard.instantiateViewControllerWithIdentifier("MainMenuNavigationController") as! UINavigationController
       window?.rootViewController = navController
     }
     

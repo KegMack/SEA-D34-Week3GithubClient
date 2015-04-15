@@ -21,11 +21,11 @@ class OAuthService {
   func handleRedirect(url : NSURL) {
     
     let oAuthCode = url.query
-    let url = "https://github.com/login/oauth/access_token"
+    let redirectUrl = "https://github.com/login/oauth/access_token"
     let parameters = "\(oAuthCode!)&client_id=\(kGithubClientID)&client_secret=\(kGithubClientSecret)"
     let data = parameters.dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: true)
     
-    let request = NSMutableURLRequest(URL: NSURL(string: url)!)
+    let request = NSMutableURLRequest(URL: NSURL(string: redirectUrl)!)
     request.HTTPMethod = "POST"
     request.HTTPBody = data
     request.setValue("application/json", forHTTPHeaderField: "Accept")

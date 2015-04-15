@@ -27,7 +27,7 @@
 			<string>com.week3GithubClien.craigsapplications</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>Week3GithubClient</string>
+				<string>githubclient</string>
 			</array>
 		</dict>
 	</array>
