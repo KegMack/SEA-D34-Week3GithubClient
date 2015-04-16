@@ -20,16 +20,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       rootViewController = self.window?.rootViewController as? LoginViewController,
       storyboard = rootViewController.storyboard
     {
-      println(token)
       let navController = storyboard.instantiateViewControllerWithIdentifier("MainMenuNavigationController") as! UINavigationController
       window?.rootViewController = navController
     }
-    
+
     return true
   }
   
   func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-    self.oAuthService.handleRedirect(url)
+    if let query = url.query {
+      self.oAuthService.handleRedirect(url)
+    }
     return true
   }
 

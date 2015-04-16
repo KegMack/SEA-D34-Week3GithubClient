@@ -14,7 +14,6 @@ class RepoSearchTableViewController: UITableViewController, UISearchBarDelegate 
   let githubService = GithubService.defaultService
   var repos = [Repository]()
   
-
   
   // MARK: - Table view data source
   

@@ -13,7 +13,6 @@ class LoginViewController: UIViewController {
   @IBAction func loginPressed(sender: UIButton) {
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let oAuthService = appDelegate.oAuthService
-    
     oAuthService.requestOAuth { [weak self] () -> () in
       if self != nil {
         let window = appDelegate.window

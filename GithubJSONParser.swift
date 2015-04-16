@@ -25,13 +25,31 @@ class GithubJSONParser {
             htmlURL = repoData["html_url"] as? String,
             description = repoData["description"] as? String
           {
-            println(name)
             let repo = Repository(name: name, author: author, htmlUrl: htmlURL, description: description)
             repos.append(repo)
           }
         }
     }
     return repos 
+  }
+  
+  class func usersFromJSONData(jsonData: NSData) -> [User] {
+    var users = [User]()
+    var error: NSError?
+    if let
+      jsonInfo = NSJSONSerialization.JSONObjectWithData(jsonData, options: nil, error: &error) as? [String:  AnyObject],
+      items = jsonInfo["items"] as? [[String: AnyObject]]   {
+        for item in items {
+          if let
+            login = item["login"] as? String,
+            avatarURL = item["avatar_url"] as? String,
+            htmlURL = item["html_url"] as? String {
+              let user = User(name: login, avatarURL: avatarURL, htmlURL: htmlURL)
+              users.append(user)
+          }
+        }
+    }
+    return users
   }
   
   
