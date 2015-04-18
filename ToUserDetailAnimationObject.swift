@@ -26,7 +26,7 @@ class ToUserDetailAnimationObject: NSObject, UIViewControllerAnimatedTransitioni
     
     destinationVC.view.alpha = 0
     containerView.addSubview(destinationVC.view)
-  
+    
     let selectedIndexPath = presentingVC.collectionView.indexPathsForSelectedItems().first as! NSIndexPath
     let userCell = presentingVC.collectionView.cellForItemAtIndexPath(selectedIndexPath) as! UserCollectionViewCell
     let snapShot = userCell.imageView.snapshotViewAfterScreenUpdates(false)
@@ -65,7 +65,6 @@ class ToUserDetailAnimationObject: NSObject, UIViewControllerAnimatedTransitioni
           destinationVC.userImageView.hidden = false
           snapShot.removeFromSuperview()
           userCell.hidden = false
-          println("Hi")
           transitionContext.completeTransition(true)
         } else {
           transitionContext.completeTransition(false)

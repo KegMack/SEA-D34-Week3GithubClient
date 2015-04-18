@@ -67,6 +67,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="lvH-Oo-lOg" kind="show" identifier="MyReposSegue" id="f4Y-x5-P7V"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="GU5-o8-Raw" style="IBUITableViewCellStyleDefault" id="PNt-ax-CC9">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -81,6 +84,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="a1Y-T4-HKH" kind="show" identifier="myProfileSegue" id="IWX-iy-05T"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -172,7 +178,47 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rZ0-nx-Hmh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1704" y="716"/>
+            <point key="canvasLocation" x="1732" y="36"/>
+        </scene>
+        <!--My Repos Table View Controller-->
+        <scene sceneID="5sZ-Cy-UjN">
+            <objects>
+                <tableViewController id="lvH-Oo-lOg" customClass="MyReposTableViewController" customModule="Week3GithubClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="KpL-tc-icf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myRepoCell" textLabel="KN3-5U-gig" detailTextLabel="0bO-tB-1Qq" style="IBUITableViewCellStyleSubtitle" id="DtM-04-JO8">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DtM-04-JO8" id="1Ui-Az-PiD">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KN3-5U-gig">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0bO-tB-1Qq">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="lvH-Oo-lOg" id="SVb-MP-gah"/>
+                            <outlet property="delegate" destination="lvH-Oo-lOg" id="ag7-ly-W6l"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rxb-hH-tnT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1732" y="770"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="PB0-6k-oHd">
@@ -190,7 +236,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F8O-JK-ztm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2545" y="50"/>
+            <point key="canvasLocation" x="2517" y="-834"/>
         </scene>
         <!--User Detail View Controller-->
         <scene sceneID="0YF-Lm-9bB">
@@ -261,7 +307,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FQd-I9-ae9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2431" y="716"/>
+            <point key="canvasLocation" x="2571" y="380"/>
         </scene>
         <!--Repo Search Table View Controller-->
         <scene sceneID="5r1-B4-AMk">
@@ -309,7 +355,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QN4-Pi-mb3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1704" y="35"/>
+            <point key="canvasLocation" x="1740" y="-829"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="rBm-VA-ooW">
@@ -367,4 +413,7 @@
             <point key="canvasLocation" x="198" y="363"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="IWX-iy-05T"/>
+    </inferredMetricsTieBreakers>
 </document>

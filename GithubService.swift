@@ -15,6 +15,8 @@ class GithubService {
   let githubSearchRepoURL = "https://api.github.com/search/repositories"
   let githubSearchUserURL = "https://api.github.com/search/users"
   let githubUserInforURL = "https://api.github.com/users/"
+  let githubMyReposURL = "https://api.github.com/user/repos"
+  let githubMyProfileURL = "https://api.github.com/user"
   let localURL = "http://127.0.0.1:3000"
   
   
@@ -38,7 +40,7 @@ class GithubService {
               completionHandler(repos, nil)
             })
           default:
-            println(httpResponse.statusCode)
+            completionHandler(nil, "\(httpResponse.statusCode)")
           }
         }
       }
@@ -70,15 +72,12 @@ class GithubService {
   func fetchUserInfo(user: User, completionHandler: (User, String?) -> (Void)) {
     
     let searchURLString = self.githubUserInforURL + user.name
-    println(searchURLString)
     let searchRequest = NSMutableURLRequest(URL: NSURL(string: searchURLString)!)
     let dataTask = NSURLSession.sharedSession().dataTaskWithRequest(searchRequest, completionHandler: { (data, response, error) -> Void in
       if error != nil {
-        println("error")
         completionHandler(user, error!.description)
       }
       else if data != nil {
-        println("got data")
         let newUser = GithubJSONParser.addUserDetailsFromJSONData(user, jsonData: data)
         NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
           completionHandler(newUser, nil)
@@ -87,4 +86,47 @@ class GithubService {
     })
     dataTask.resume()
   }
+  
+  func fetchMyRepos(completionHandler: ([Repository]?, String?) -> (Void)) {
+    let searchURLString = self.githubMyReposURL
+    let searchRequest = NSMutableURLRequest(URL: NSURL(string: searchURLString)!)
+    if let token = NSUserDefaults.standardUserDefaults().objectForKey(kUserDefaultTokenKey) as? String {
+      searchRequest.setValue("token \(token)", forHTTPHeaderField: "Authorization")
+      let dataTask = NSURLSession.sharedSession().dataTaskWithRequest(searchRequest, completionHandler: { (data, response, error) -> Void in
+        if error != nil {
+          completionHandler(nil, error!.description)
+        }
+        else if data != nil {
+          let repos = GithubJSONParser.userReposFromJSONData(data)
+          NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+            completionHandler(repos, nil)
+          })
+        }
+      })
+      dataTask.resume()
+    }
+  }
+  
+  func fetchMyProfile(completionHandler: (User?, String?) -> (Void)) {
+    let searchURLString = self.githubMyProfileURL
+    let searchRequest = NSMutableURLRequest(URL: NSURL(string: searchURLString)!)
+    if let token = NSUserDefaults.standardUserDefaults().objectForKey(kUserDefaultTokenKey) as? String {
+      searchRequest.setValue("token \(token)", forHTTPHeaderField: "Authorization")
+      let dataTask = NSURLSession.sharedSession().dataTaskWithRequest(searchRequest, completionHandler: { (data, response, error) -> Void in
+        if error != nil {
+          completionHandler(nil, error!.description)
+        }
+        else if data != nil {
+          let myProfile = GithubJSONParser.myProfileFromJSONData(data)
+          if myProfile != nil {
+            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+              completionHandler(myProfile!, nil)
+            })
+          }
+        }
+      })
+      dataTask.resume()
+    }
+  }
+  
 }
