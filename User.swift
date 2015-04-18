@@ -13,6 +13,9 @@ class User {
   var name: String
   var avatarURL: String
   var htmlURL: String
+  var location: String?
+  var bio: String?
+  var hireable: Bool?
   var avatarImage: UIImage?
   
   init(name: String, avatarURL: String, htmlURL: String) {

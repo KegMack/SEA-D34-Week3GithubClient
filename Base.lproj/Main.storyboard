@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8t7-08-SAQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8t7-08-SAQ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -174,6 +174,24 @@
             </objects>
             <point key="canvasLocation" x="1704" y="716"/>
         </scene>
+        <!--Web View Controller-->
+        <scene sceneID="PB0-6k-oHd">
+            <objects>
+                <viewController id="bQF-Cc-L3r" customClass="WebViewController" customModule="Week3GithubClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8yJ-Qu-vVy"/>
+                        <viewControllerLayoutGuide type="bottom" id="QPJ-pe-Cso"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="W21-We-Dcq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F8O-JK-ztm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2545" y="50"/>
+        </scene>
         <!--User Detail View Controller-->
         <scene sceneID="0YF-Lm-9bB">
             <objects>
@@ -193,14 +211,51 @@
                                     <constraint firstAttribute="width" constant="200" id="ZOC-rm-paM"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4Y-DD-zNk">
+                                <rect key="frame" x="260" y="280" width="81" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C85-lD-UsA">
+                                <rect key="frame" x="255" y="319" width="91" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" horizontalCompressionResistancePriority="748" text="Bio" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wA6-oF-tSJ">
+                                <rect key="frame" x="283" y="356" width="35" height="111"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hireable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5XO-2j-ZcZ">
+                                <rect key="frame" x="259" y="475" width="83" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="r0z-od-Vee" firstAttribute="top" secondItem="S2d-co-428" secondAttribute="bottom" constant="8" id="6Gx-yZ-H9E"/>
+                            <constraint firstAttribute="centerX" secondItem="wA6-oF-tSJ" secondAttribute="centerX" id="6Vk-3U-J9H"/>
+                            <constraint firstAttribute="centerX" secondItem="Y4Y-DD-zNk" secondAttribute="centerX" id="6su-gF-Q07"/>
+                            <constraint firstAttribute="centerX" secondItem="5XO-2j-ZcZ" secondAttribute="centerX" id="B2l-lT-lbH"/>
+                            <constraint firstItem="Y4Y-DD-zNk" firstAttribute="top" secondItem="r0z-od-Vee" secondAttribute="bottom" constant="8" id="Sl1-tD-TBV"/>
+                            <constraint firstAttribute="centerX" secondItem="C85-lD-UsA" secondAttribute="centerX" id="Xjb-X3-EpX"/>
                             <constraint firstAttribute="centerX" secondItem="r0z-od-Vee" secondAttribute="centerX" id="ZhQ-A9-RYI"/>
+                            <constraint firstItem="rIt-90-vjs" firstAttribute="top" secondItem="5XO-2j-ZcZ" secondAttribute="bottom" constant="97" id="fMd-4H-Un5"/>
+                            <constraint firstItem="wA6-oF-tSJ" firstAttribute="top" secondItem="C85-lD-UsA" secondAttribute="bottom" constant="8" id="gsN-IB-rWJ"/>
+                            <constraint firstItem="C85-lD-UsA" firstAttribute="top" secondItem="Y4Y-DD-zNk" secondAttribute="bottom" constant="3" id="ve7-SV-3qb"/>
+                            <constraint firstItem="5XO-2j-ZcZ" firstAttribute="top" secondItem="wA6-oF-tSJ" secondAttribute="bottom" constant="8" id="zhG-dY-qH7"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bioLabel" destination="wA6-oF-tSJ" id="pVd-3p-mCb"/>
+                        <outlet property="hireableLabel" destination="5XO-2j-ZcZ" id="Rsa-gP-LtT"/>
+                        <outlet property="locationLabel" destination="C85-lD-UsA" id="Moo-Tf-Twc"/>
+                        <outlet property="nameLabel" destination="Y4Y-DD-zNk" id="FUo-2H-yez"/>
                         <outlet property="userImageView" destination="r0z-od-Vee" id="l7C-py-hgu"/>
                     </connections>
                 </viewController>
@@ -238,6 +293,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="bQF-Cc-L3r" kind="show" identifier="RepoSegue" id="AfE-ai-m28"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

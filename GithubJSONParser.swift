@@ -43,14 +43,35 @@ class GithubJSONParser {
           if let
             login = item["login"] as? String,
             avatarURL = item["avatar_url"] as? String,
-            htmlURL = item["html_url"] as? String {
-              let user = User(name: login, avatarURL: avatarURL, htmlURL: htmlURL)
-              users.append(user)
+            htmlURL = item["html_url"] as? String
+          {
+            let user = User(name: login, avatarURL: avatarURL, htmlURL: htmlURL)
+            users.append(user)
           }
         }
     }
     return users
   }
   
+  class func addUserDetailsFromJSONData(user: User, jsonData: NSData) -> User {
+    var error: NSError?
+    if let
+      jsonInfo = NSJSONSerialization.JSONObjectWithData(jsonData, options: nil, error: &error) as? [String: AnyObject] {
+        if let bio = jsonInfo["bio"] as? String {
+          user.bio = bio
+        } else {
+          user.bio = "No Bio"
+        }
+        if let location = jsonInfo["location"] as? String {
+          user.location = location
+        } else {
+          user.location = "Unknown Location"
+        }
+        if let hireable = jsonInfo["hireable"] as? Bool {
+          user.hireable = hireable
+        }
+    }
+    return user
+  }
   
 }

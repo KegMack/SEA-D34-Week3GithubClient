@@ -60,17 +60,16 @@ class ToUserDetailAnimationObject: NSObject, UIViewControllerAnimatedTransitioni
       UIView.addKeyframeWithRelativeStartTime(5*self.keyFrameDuration, relativeDuration: self.keyFrameDuration, animations: { () -> Void in
         snapShot.transform = CGAffineTransformMakeRotation(CGFloat(2*M_PI))
       })
-
-    }) { (finished) -> Void in
-      if finished {
-        println("finished")
-        destinationVC.userImageView.hidden = false
-        snapShot.removeFromSuperview()
-        userCell.hidden = false
-        transitionContext.completeTransition(true)
-      } else {
-        transitionContext.completeTransition(false)
-      }
+      }) { (finished) -> Void in
+        if finished {
+          destinationVC.userImageView.hidden = false
+          snapShot.removeFromSuperview()
+          userCell.hidden = false
+          println("Hi")
+          transitionContext.completeTransition(true)
+        } else {
+          transitionContext.completeTransition(false)
+        }
     }
   }
   

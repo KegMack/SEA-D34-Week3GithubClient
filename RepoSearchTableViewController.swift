@@ -33,6 +33,16 @@ class RepoSearchTableViewController: UITableViewController, UISearchBarDelegate 
   
   // MARK: SearchBar Delegation
   
+  func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    let valid = text.validForURL()
+    if valid {
+      return true
+    } else {
+      ViewShaker.shake(searchBar)
+      return false
+    }
+  }
+  
   func searchBarSearchButtonClicked(searchBar: UISearchBar) {
     searchBar.resignFirstResponder()
     self.githubService.fetchRepositories(searchBar.text, completionHandler: { (newRepos, error) -> (Void) in
@@ -45,5 +55,18 @@ class RepoSearchTableViewController: UITableViewController, UISearchBarDelegate 
       }
     })
   }
+  
+  // MARK: Segue
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "RepoSegue" {
+      if let destinationVC = segue.destinationViewController as? WebViewController {
+        let indexPath = self.tableView.indexPathForSelectedRow()
+        destinationVC.repo = self.repos[indexPath!.row]
+      }
+    }
+  }
+  
+  
   
 }

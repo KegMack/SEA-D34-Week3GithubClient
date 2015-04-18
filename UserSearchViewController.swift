@@ -29,6 +29,16 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
 
   //MARK: searchBar Delegation
   
+  func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    let valid = text.validForURL()
+    if valid {
+      return true
+    } else {
+      ViewShaker.shake(searchBar)
+      return false
+    }
+  }
+  
   func searchBarSearchButtonClicked(searchBar: UISearchBar) {
     searchBar.resignFirstResponder()
     GithubService.defaultService.fetchUsers(searchBar.text, completionHandler: { (data, error) -> (Void) in
@@ -78,13 +88,11 @@ class UserSearchViewController: UIViewController, UICollectionViewDataSource, UI
       let destinationVC = segue.destinationViewController as! UserDetailViewController
       let selectedIndexPath = self.collectionView.indexPathsForSelectedItems().first as! NSIndexPath
       destinationVC.user = self.users[selectedIndexPath.row]
-      println("segue")
     }
   }
   
   func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
     if toVC is UserDetailViewController {
-      println("new animation")
       return ToUserDetailAnimationObject()
     } else {
       return nil
